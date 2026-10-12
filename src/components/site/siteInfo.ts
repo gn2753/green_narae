@@ -6,6 +6,8 @@ export const SITE_INFO = {
   email: "hello@greennarae.example",
   hours: "평일 09:00 – 18:00 (토·일·공휴일 휴무)",
   bizNo: "000-00-00000",
+  /** 사이트 대표 주소. 1차는 공개 시안, 2차 운영 시 Firebase Hosting(→ 정식 도메인)으로 교체. */
+  url: "https://gn2753.github.io/green_narae/",
 } as const;
 
 export const NAV_ITEMS = [

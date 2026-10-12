@@ -9,7 +9,7 @@ export function LocalBusinessJsonLd() {
     description: "간판 디자인·제작·시공 전문 업체",
     address: { "@type": "PostalAddress", streetAddress: SITE_INFO.address, addressCountry: "KR" },
     telephone: SITE_INFO.phone,
-    url: "https://somysam.github.io/green_narae/",
+    url: SITE_INFO.url,
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }} />;
 }
