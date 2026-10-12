@@ -1,0 +1,60 @@
+/* 히어로 일러스트 애니메이션 — 20초 한 사이클 (대화 5쌍 · 간판 이동 · 드릴 · 오렌지 순차 점등) */
+.hero-scene { width: 100%; height: auto; display: block; overflow: visible; }
+.hero-scene .jua { font-family: var(--font-jua), var(--font-noto), sans-serif; }
+.hero-scene .noto { font-family: var(--font-noto), system-ui, sans-serif; }
+
+.hero-scene .bub, .hero-scene .rep { opacity: 0; transform-box: fill-box; }
+.hero-scene .bub { transform-origin: 20% 100%; animation: hero-say 20s infinite; }
+.hero-scene .rep { transform-origin: 10% 100%; animation: hero-reply 20s infinite; }
+@keyframes hero-say   { 0%{opacity:0;transform:scale(.6)} 2%{opacity:1;transform:scale(1.07)} 3.2%{transform:scale(1)} 16.8%{opacity:1} 18.8%{opacity:0} 100%{opacity:0} }
+@keyframes hero-reply { 0%{opacity:0;transform:scale(.6)} 2%{opacity:1;transform:scale(1.07)} 3.2%{transform:scale(1)} 10.4%{opacity:1} 12.4%{opacity:0} 100%{opacity:0} }
+.hero-scene .t1{animation-delay:0s}.hero-scene .t2{animation-delay:4s}.hero-scene .t3{animation-delay:8s}.hero-scene .t4{animation-delay:12s}.hero-scene .t5{animation-delay:16s}
+.hero-scene .r1{animation-delay:1.3s}.hero-scene .r2{animation-delay:5.3s}.hero-scene .r3{animation-delay:9.3s}.hero-scene .r4{animation-delay:13.3s}.hero-scene .r5{animation-delay:17.3s}
+
+.hero-scene .sign { transform-box: fill-box; transform-origin: 50% 50%; animation: hero-signmove 20s infinite ease-in-out; }
+@keyframes hero-signmove {
+  0%,4.8%  { transform: translate(14px,-5px) rotate(-3.5deg); }
+  14.4%,21.6%{ transform: translate(0,-5px) rotate(-3.5deg); }
+  29.6%,97%{ transform: translate(0,0) rotate(0); }
+  100%   { transform: translate(14px,-5px) rotate(-3.5deg); }
+}
+.hero-scene .lights { opacity: 0; animation: hero-lights 20s infinite; }
+@keyframes hero-lights { 0%,67%{opacity:0} 68.5%{opacity:1} 97%{opacity:1} 99%,100%{opacity:0} }
+.hero-scene .sparks { opacity: 0; animation: hero-sparks 20s infinite; }
+@keyframes hero-sparks { 0%,45.6%{opacity:0} 46.4%{opacity:1} 48%{opacity:0} 49.6%{opacity:1} 51.2%{opacity:.2} 52.8%{opacity:1} 55.2%{opacity:0} 56.8%{opacity:1} 59.2%,100%{opacity:0} }
+.hero-scene .drillarm { animation: hero-drill 20s infinite; }
+@keyframes hero-drill { 0%,45.6%{transform:translate(0,0)} 46.4%,49.6%,52.8%,56%{transform:translate(-1px,1px)} 48%,51.2%,54.4%,57.6%{transform:translate(1px,-1px)} 59.2%,100%{transform:translate(0,0)} }
+.hero-scene .boom { transform-origin: 405px 292px; animation: hero-boom 8s ease-in-out infinite alternate; }
+@keyframes hero-boom { 0%{transform:rotate(0)} 100%{transform:rotate(-1.4deg)} }
+.hero-scene .point { transform-origin: 58px 256px; animation: hero-point 20s ease-in-out infinite; }
+@keyframes hero-point { 0%,16%{transform:rotate(-38deg)} 20%,36%{transform:rotate(6deg)} 40%,56%{transform:rotate(-14deg)} 60%,76%{transform:rotate(-2deg)} 80%{transform:rotate(-58deg)} 84%{transform:rotate(-40deg)} 88%{transform:rotate(-58deg)} 92%{transform:rotate(-40deg)} 96%{transform:rotate(-58deg)} 100%{transform:rotate(-38deg)} }
+.hero-scene .thumb { opacity:0; animation: hero-thumb 20s infinite; }
+@keyframes hero-thumb { 0%,39%{opacity:0} 40%,56%{opacity:1} 57%,100%{opacity:0} }
+
+/* 점등: 오렌지 채널 글자가 한 자씩 켜진 뒤 불투명도만 숨쉬듯 변화 (블러·후광 없음) */
+.hero-scene .ch { opacity: 0; animation: hero-chOn 20s infinite; }
+.hero-scene .ch2 { animation-delay: .3s; } .hero-scene .ch3 { animation-delay: .6s; } .hero-scene .ch4 { animation-delay: .9s; }
+@keyframes hero-chOn { 0%,69%{opacity:0} 69.6%{opacity:1} 70.1%{opacity:.35} 70.7%{opacity:1} 96%{opacity:1} 98%,100%{opacity:0} }
+.hero-scene .breath { animation: hero-breath 2.8s ease-in-out infinite; }
+@keyframes hero-breath { 0%,100%{opacity:1} 50%{opacity:.72} }
+.hero-scene .bob { animation: hero-bob 1.8s ease-in-out infinite alternate; }
+@keyframes hero-bob { 0%{transform:translateY(0)} 100%{transform:translateY(-2px)} }
+
+.hero-scene .cloud { animation: hero-drift 22s linear infinite alternate; }
+.hero-scene .cloud.c2 { animation-duration: 30s; animation-direction: alternate-reverse; }
+@keyframes hero-drift { 0%{transform:translateX(0)} 100%{transform:translateX(46px)} }
+.hero-scene .rays { transform-origin: 470px 48px; animation: hero-spin 30s linear infinite; }
+@keyframes hero-spin { to { transform: rotate(360deg); } }
+.hero-scene .tail { transform-origin: 262px 330px; animation: hero-tail 1.4s ease-in-out infinite alternate; }
+@keyframes hero-tail { 0%{transform:rotate(-14deg)} 100%{transform:rotate(16deg)} }
+.hero-scene .birds { animation: hero-fly 14s linear infinite; }
+@keyframes hero-fly { 0%{transform:translate(-60px,10px)} 100%{transform:translate(560px,-30px)} }
+.hero-scene .wing { transform-box: fill-box; transform-origin: 50% 100%; animation: hero-flap .5s ease-in-out infinite alternate; }
+@keyframes hero-flap { 0%{transform:scaleY(1)} 100%{transform:scaleY(-.4)} }
+
+/* 모션 줄이기: 정지 + 점등 완료 장면, 말풍선 숨김 */
+@media (prefers-reduced-motion: reduce) {
+  .hero-scene * { animation: none !important; }
+  .hero-scene .lights, .hero-scene .ch { opacity: 1 !important; }
+  .hero-scene .bub, .hero-scene .rep { opacity: 0 !important; }
+}

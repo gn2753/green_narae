@@ -1,0 +1,4 @@
+export const fieldCls = "min-h-11 w-full min-w-0 rounded-lg border border-[#D5DDD8] bg-white px-3 text-sm text-[#1F2A24] placeholder:text-[#7A867F] focus-visible:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 disabled:bg-[#F6F7F5] md:min-h-10";
+export const primaryBtn = "inline-flex min-h-11 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg bg-brand px-4 text-sm font-bold text-white hover:bg-brand-dark disabled:opacity-50 md:min-h-10";
+export const ghostBtn = "inline-flex min-h-11 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg border border-[#D5DDD8] bg-white px-4 text-sm font-bold text-[#3B4A41] hover:bg-[#F6F7F5] disabled:opacity-50 md:min-h-10";
+export const cardCls = "mb-4 min-w-0 rounded-xl border border-[#E3E8E4] bg-white p-3 md:p-4";

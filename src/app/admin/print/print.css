@@ -1,0 +1,49 @@
+/* A08 인쇄물. 기존 업무판 print.css 이식. 모든 규칙은 .print-report / body.printing-report 로 한정한다. */
+.print-report { display:none; }
+
+/* Share exact paper dimensions and typography between measurement and printing. */
+.print-report {
+  --print-scale:1;
+  width:194mm; height:279mm; box-sizing:border-box; overflow:hidden;
+  flex-direction:column; gap:0; color:#111; background:white;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+  font-size:10pt; line-height:1.2;
+}
+.print-report .print-heading { display:flex; flex:0 0 auto; align-items:flex-end; justify-content:space-between; gap:6mm; margin:0 0 2mm; padding:0 0 2mm; border-bottom:1pt solid #253f38; }
+.print-report .print-heading p { margin:0; font-size:9pt; line-height:1.4; }
+.print-report .print-heading h1 { margin:1mm 0 0; font-size:17pt; line-height:1.2; letter-spacing:-.03em; font-weight:700; color:#111; }
+.print-report .print-meta { text-align:right; }
+.print-report .print-table-space { flex:1 1 0; min-height:0; position:relative; overflow:hidden; }
+.print-report .print-fit-content { position:absolute; top:1px; left:1px; width:calc((100% - 2px) / var(--print-scale)); transform:scale(var(--print-scale)); transform-origin:top left; }
+.print-report [data-slot="table-container"] { overflow:visible!important; position:static!important; }
+.print-report .print-table { width:100%; table-layout:fixed; border-collapse:collapse; font-size:10pt!important; color:#111; }
+.print-report .print-table th,.print-report .print-table td { height:auto; padding:0.5mm 0.8mm!important; border:0.5pt solid #a9b6b2!important; text-align:left; vertical-align:top; white-space:normal!important; overflow-wrap:anywhere; word-break:normal; line-height:1.2; font-size:10pt!important; }
+.print-report .print-table th { background:#edf2ef!important; color:#111!important; font-weight:700; print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+.print-report .print-table th:first-child,.print-report .print-table td:first-child { text-align:center; }
+.print-report .print-table tr.print-part-start > td { border-top:1.5pt solid #253f38!important; }
+.print-report .print-table .print-category { print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+.print-report .print-table .print-category[data-category="design"] { background:#dcfce7!important; }
+.print-report .print-table .print-category[data-category="meeting"] { background:#ede9fe!important; }
+.print-report .print-table .print-category[data-category="owner"] { background:#dbeafe!important; }
+.print-report .print-table .print-category[data-category="estimate"] { background:#fef3c7!important; }
+.print-report .print-table .print-category[data-category="waiting"] { background:#ffedd5!important; }
+.print-report .print-table .print-category[data-category="admin"] { background:#e5e7eb!important; }
+.print-report .print-task-title { font-weight:600; }
+.print-report .print-memo { background:white!important; }
+.print-report .print-empty { text-align:center!important; padding:8mm!important; }
+.print-report .print-note { flex:0 0 auto; margin:2mm 0 0; padding:0; color:#47564f; font-size:8pt; line-height:1.4; }
+.print-report.print-measuring { display:flex; position:fixed; left:-100000px; top:0; visibility:hidden; pointer-events:none; }
+
+/* 화면 미리보기: 용지 여백(8mm)까지 포함한 A4 크기. 축소 표시는 부모 래퍼가 transform 으로 처리한다. */
+.print-report.print-preview { display:flex; position:static; box-shadow:0 0 0 1px #d5dcd7; padding:8mm; width:210mm; height:295mm; }
+.print-report.print-preview.print-measuring { position:fixed; }
+
+@page { size:A4 portrait; margin:8mm; }
+@media print {
+  body.printing-report { background:white!important; color:#111!important; margin:0!important; padding:0!important; }
+  html:has(body.printing-report) { background:white!important; }
+  body.printing-report > :not(.print-portal),
+  body.printing-report [data-sonner-toaster] { display:none!important; }
+  body.printing-report .print-portal { display:block!important; }
+  body.printing-report .print-portal .print-report { display:flex!important; position:static!important; visibility:visible!important; break-inside:avoid; page-break-inside:avoid; }
+}
